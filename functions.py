@@ -47,9 +47,9 @@ def move_files(src_class_dir: str, dest_class_dir: str, n: int = 50) -> None:
 # Create validation split
 # ---------------------------
 def prepare_validation_set():
-    if not os.path.exists('data/chestxrays/val'):
-        move_files('data/chestxrays/train/NORMAL', 'data/chestxrays/val/NORMAL', n=50)
-        move_files('data/chestxrays/train/PNEUMONIA', 'data/chestxrays/val/PNEUMONIA', n=50)
+    if not os.path.exists('data/val'):
+        move_files('data/train/NORMAL', 'data/val/NORMAL', n=50)
+        move_files('data/train/PNEUMONIA', 'data/val/PNEUMONIA', n=50)
 
 # ---------------------------
 # Data transforms and datasets
@@ -68,9 +68,9 @@ def prepare_datasets():
         transforms.Normalize(mean=transform_mean, std=transform_std)
     ])
 
-    train_dataset = datasets.ImageFolder('data/chestxrays/train', transform=train_transform)
-    val_dataset = datasets.ImageFolder('data/chestxrays/val', transform=val_test_transform)
-    test_dataset = datasets.ImageFolder('data/chestxrays/test', transform=val_test_transform)
+    train_dataset = datasets.ImageFolder('data/train', transform=train_transform)
+    val_dataset = datasets.ImageFolder('data/val', transform=val_test_transform)
+    test_dataset = datasets.ImageFolder('data/test', transform=val_test_transform)
 
     print("Training set size:", len(train_dataset))
     print("Validation set size:", len(val_dataset))
