@@ -19,6 +19,18 @@ Each dataset is evenly divided into two classes—NORMAL and PNEUMONIA—compris
 - `data/train`: 200 images (100 NORMAL, 100 PNEUMONIA)
 - `data/val`: 100 images (50 NORMAL, 50 PNEUMONIA)
 - `data/test`: 100 images (50 NORMAL, 50 PNEUMONIA)
+```
+data/
+├── train/
+│   ├── NORMAL/
+│   └── PNEUMONIA/
+├── val/
+│   ├── NORMAL/
+│   └── PNEUMONIA/
+└── test/
+    ├── NORMAL/
+    └── PNEUMONIA/
+```
 
 All images are preprocessed and resized to 224x224 pixels using `transforms.Resize(224)` and `transforms.CenterCrop(224)`.  
 Data is loaded into a `train_loader`, `val_loader`, and `test_loader` using the `DataLoader` class from the PyTorch library.
